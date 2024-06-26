@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>酷炫現代風格的表格</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #121212;
+            background-image: 
+                linear-gradient(45deg, #1a1a1a 25%, transparent 25%),
+                linear-gradient(-45deg, #1a1a1a 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #1a1a1a 75%),
+                linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+            background-size: 20px 20px;
+        }
+        h1 {
+            color: #bb86fc;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(187, 134, 252, 0.7);
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+            background-color: transparent;
+        }
+        th, td {
+            padding: 20px;
+            text-align: left;
+            background-color: #1e1e1e;
+            transition: all 0.3s ease;
+        }
+        th {
+            background-color: #03dac6;
+            color: #000000;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 16px;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+        }
+        tr {
+            transform: perspective(1000px) rotateX(0deg);
+            transition: transform 0.3s ease;
+        }
+        tr:hover {
+            transform: perspective(1000px) rotateX(5deg);
+            z-index: 10;
+        }
+        td {
+            position: relative;
+            overflow: hidden;
+        }
+        td::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+        tr:hover td::before {
+            transform: translateX(100%);
+        }
+        @media screen and (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>酷炫現代風格的表格</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>比較項目</th>
+                <th>SwiftUI</th>
+                <th>UIKit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>開發方式</strong></td>
+                <td>使用宣告式語法，通過描述視圖的狀態來自動更新 UI。</td>
+                <td>使用命令式語法，通過編寫具體的代碼來操作和更新視圖。</td>
+            </tr>
+            <tr>
+                <td><strong>學習曲線</strong></td>
+                <td>對新手友好，簡單易學，特別適合初學者。</td>
+                <td>對於有編程經驗的開發者較為友好，但對初學者來說可能比較陡峭。</td>
+            </tr>
+            <tr>
+                <td><strong>更新和維護</strong></td>
+                <td>隨著新的 iOS 版本而不斷更新，Apple 致力於增強和擴展 SwiftUI。</td>
+                <td>已經存在多年，功能齊全且穩定，但更新頻率相對較低。</td>
+            </tr>
+            <tr>
+                <td><strong>性能</strong></td>
+                <td>針對現代硬件進行優化，性能表現良好，但在某些複雜情況下可能需要進一步調優。</td>
+                <td>性能穩定且可靠，適合大規模、複雜的應用程序。</td>
+            </tr>
+            <tr>
+                <td><strong>靈活性</strong></td>
+                <td>更簡單、直觀地進行佈局，但在某些自定義需求上可能會有限制。</td>
+                <td>提供更多的靈活性和自定義選項，可以實現幾乎所有的 UI 設計。</td>
+            </tr>
+            <tr>
+                <td><strong>代碼可讀性</strong></td>
+                <td>代碼更加簡潔和易讀，便於維護。</td>
+                <td>代碼可能會比較冗長和複雜，尤其是在處理大量視圖和邏輯時。</td>
+            </tr>
+            <tr>
+                <td><strong>響應式編程</strong></td>
+                <td>支持響應式編程，視圖會根據狀態的變化自動更新。</td>
+                <td>需要手動管理視圖的更新和狀態變化。</td>
+            </tr>
+            <tr>
+                <td><strong>平台支持</strong></td>
+                <td>主要針對 iOS 13 及以上版本的開發，逐漸支持其他 Apple 平台（如 macOS）。</td>
+                <td>支持從 iOS 2.0 到現在所有版本，且也支持其他 Apple 平台。</td>
+            </tr>
+            <tr>
+                <td><strong>佈局方式</strong></td>
+                <td>使用 VStack、HStack 和 ZStack 等簡單直觀的佈局方式。</td>
+                <td>使用 Auto Layout 和 Storyboard 進行佈局，靈活性和控制力更強。</td>
+            </tr>
+            <tr>
+                <td><strong>代碼熱重載</strong></td>
+                <td>支持即時預覽（Xcode Canvas），可以即時查看 UI 的變化。</td>
+                <td>不支持即時預覽，需要運行應用程序來查看 UI 的變化。</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
